@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwrigugplt7c0"]
+
+[ext_resource type="Texture2D" uid="uid://8nmciurn03xa" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaRed2/SeparateAnim/Item.png" id="1_8afob"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
+radius = 7.0
+height = 16.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dovo2")
+
+[node name="Item" type="Sprite2D" parent="."]
+texture = ExtResource("1_8afob")
