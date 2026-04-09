@@ -13,3 +13,9 @@ config_version=5
 config/name="2d_action_adventure"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://Ninja Adventure - Asset Pack/": "green"
+}
