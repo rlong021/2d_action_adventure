@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="2d_action_adventure"
+run/main_scene="uid://dk2ukpthcx2bd"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*res://scenes/scenemanager/scene_manager.tscn"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
