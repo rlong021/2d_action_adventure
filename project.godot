@@ -30,6 +30,11 @@ folder_colors={
 "res://scenes/": "blue"
 }
 
+[global_group]
+
+wall="A wall tilemaplayer"
+pushable="Things that can be pushed by the player"
+
 [input]
 
 move_right={
