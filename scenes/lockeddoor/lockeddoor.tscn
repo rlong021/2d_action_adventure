@@ -13,6 +13,7 @@ script = ExtResource("1_e1wvl")
 shape = SubResource("RectangleShape2D_e1wvl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("1_wqkss")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 15)

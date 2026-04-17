@@ -2,11 +2,12 @@ extends CharacterBody2D
 class_name  Player
 
 @export var move_speed: float = 100
-@export var push_strength: float = 300.0
+@export var push_strength: float = 350.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position = SceneManager.player_spawn_position
+	if SceneManager.player_spawn_position != Vector2(0,0):
+		position = SceneManager.player_spawn_position
 	#Engine.max_fps = 15
 
 

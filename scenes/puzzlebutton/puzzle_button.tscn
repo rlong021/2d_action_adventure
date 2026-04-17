@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://sdksn5ag7odk" path="res://scenes/puzzlebutton/puzzle_button.gd" id="1_15a6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7vfo"]
-size = Vector2(16, 16)
+size = Vector2(12, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_15a6i"]
 atlas = ExtResource("1_7rrdj")
@@ -34,9 +34,12 @@ animations = [{
 }]
 
 [node name="PuzzleButton" type="Area2D"]
+collision_layer = 4
+collision_mask = 14
 script = ExtResource("1_15a6i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_e7vfo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
