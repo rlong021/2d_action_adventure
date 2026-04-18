@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cwrigugplt7c0"]
+[gd_scene load_steps=22 format=3 uid="uid://cwrigugplt7c0"]
 
 [ext_resource type="Script" uid="uid://c3jclmwi825i" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://bisqnic5als3e" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaRed2/SeparateAnim/Walk.png" id="2_dovo2"]
@@ -142,6 +142,9 @@ animations = [{
 radius = 5.0
 height = 12.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
+size = Vector2(10, 10)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -151,8 +154,19 @@ push_strength = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lgqa7")
-animation = &"move_up"
+animation = &"move_down"
+autoplay = "move_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_dovo2")
+
+[node name="InteractArea2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea2D"]
+shape = SubResource("RectangleShape2D_dovo2")
+debug_color = Color(3.17663e-06, 0.642484, 0.316943, 0.42)
+
+[connection signal="body_entered" from="InteractArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractArea2D" to="." method="_on_area_2d_body_exited"]
