@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cwrigugplt7c0"]
+[gd_scene load_steps=24 format=3 uid="uid://cwrigugplt7c0"]
 
 [ext_resource type="Script" uid="uid://c3jclmwi825i" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://bisqnic5als3e" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaRed2/SeparateAnim/Walk.png" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://d2pgbh1pcw73l" path="res://Ninja Adventure - Asset Pack/Items/Scroll/ScrollEmpty.png" id="3_gmlin"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("2_dovo2")
@@ -145,6 +146,9 @@ height = 12.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 size = Vector2(10, 10)
 
+[sub_resource type="LabelSettings" id="LabelSettings_lvxji"]
+font_size = 52
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 7
@@ -167,6 +171,31 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea2D"]
 shape = SubResource("RectangleShape2D_dovo2")
 debug_color = Color(3.17663e-06, 0.642484, 0.316943, 0.42)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 111.0
+
+[node name="TreasureLabel" type="Label" parent="CanvasLayer/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 80.0
+text = "0"
+label_settings = SubResource("LabelSettings_lvxji")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 88.0
+offset_right = 168.0
+offset_bottom = 80.0
+texture = ExtResource("3_gmlin")
 
 [connection signal="body_entered" from="InteractArea2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="InteractArea2D" to="." method="_on_area_2d_body_exited"]

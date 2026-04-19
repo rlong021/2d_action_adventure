@@ -4,8 +4,11 @@ class_name  Player
 @export var move_speed: float = 100
 @export var push_strength: float = 350.0
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	update_treasure_label()
 	if SceneManager.player_spawn_position != Vector2(0,0):
 		position = SceneManager.player_spawn_position
 	#Engine.max_fps = 15
@@ -16,6 +19,8 @@ func _physics_process(delta: float) -> void:
 	move_player()
 
 	push_blocks()
+	
+	update_treasure_label()
 	
 	move_and_slide()
 
@@ -53,15 +58,18 @@ func push_blocks():
 		if collider_node.is_in_group("wall"):
 			print("I'm touching a wall")
 	
+func update_treasure_label():
+	var treasure_amount: int = SceneManager.opened_chests.size()
+	%TreasureLabel.text = str(treasure_amount)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = true
-		print("I touched an NPC!")
+		print("I touched ", body.name)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = false
-		print("I stopped touching an NPC!")
+		print("I stopped touching ", body.name)
