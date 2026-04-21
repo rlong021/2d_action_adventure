@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dk2ukpthcx2bd"]
+[gd_scene load_steps=26 format=4 uid="uid://dk2ukpthcx2bd"]
 
 [ext_resource type="PackedScene" uid="uid://cwrigugplt7c0" path="res://scenes/player/player.tscn" id="1_468fp"]
 [ext_resource type="Texture2D" uid="uid://bl1fiur1pvq3t" path="res://Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetFloor.png" id="1_p4yfh"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dlus5rfvcqyai" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaMageBlack/SpriteSheet.png" id="9_vxwvt"]
 [ext_resource type="Texture2D" uid="uid://647niijhp6xf" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaMageBlack/Faceset.png" id="10_8ljcs"]
 [ext_resource type="PackedScene" uid="uid://dxqo6yxe76mtp" path="res://scenes/switch/switch.tscn" id="14_ohupj"]
+[ext_resource type="AudioStream" uid="uid://ov0bajycntyg" path="res://Ninja Adventure - Asset Pack/Musics/11 - Clearing.ogg" id="15_781sm"]
+[ext_resource type="PackedScene" uid="uid://dhwv4uys2bi4c" path="res://scenes/ememies/slime_enemy.tscn" id="16_weddm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1fbb"]
 texture = ExtResource("1_p4yfh")
@@ -860,7 +862,7 @@ text = "Green Ninja"
 
 [node name="NPC3" parent="ObstacleLayer" instance=ExtResource("6_xp4f2")]
 position = Vector2(136, -88)
-dialogue_lines = Array[String](["You think you can beat my dungeon? Bwahahahah!", "I beat you won't even solve the first puzzle inside!"])
+dialogue_lines = Array[String](["You think you can beat my dungeon? Bwahahahah!", "I bet you won't even solve the first puzzle inside!"])
 
 [node name="Sprite2D" parent="ObstacleLayer/NPC3" index="0"]
 texture = SubResource("AtlasTexture_8ljcs")
@@ -906,6 +908,16 @@ shape = SubResource("RectangleShape2D_xp4f2")
 
 [node name="Switch" parent="." instance=ExtResource("14_ohupj")]
 position = Vector2(-45, -22)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("15_781sm")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true
+
+[node name="SlimeEnemy" parent="." instance=ExtResource("16_weddm")]
+position = Vector2(0, -40)
 
 [connection signal="pressed" from="PuzzleButton" to="Lockeddoor" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="Lockeddoor" method="_on_puzzle_button_unpressed"]

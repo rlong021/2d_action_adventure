@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dymn2fpg8e48k"]
+[gd_scene load_steps=10 format=3 uid="uid://dymn2fpg8e48k"]
 
 [ext_resource type="Texture2D" uid="uid://dp2nw78wblo6q" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaBlue2/SpriteSheet.png" id="1_ivh6b"]
 [ext_resource type="Script" uid="uid://dd0s7erk4c5o6" path="res://scenes/npcs/npc.gd" id="1_m5fb5"]
 [ext_resource type="Texture2D" uid="uid://b2igfn3rcx4jk" path="res://Ninja Adventure - Asset Pack/Ui/Dialog/DialogBoxFaceset.png" id="3_5ejjj"]
 [ext_resource type="Texture2D" uid="uid://dlx4g5f7r03j7" path="res://Ninja Adventure - Asset Pack/Actor/Characters/NinjaBlue2/Faceset.png" id="4_p1a37"]
+[ext_resource type="AudioStream" uid="uid://cqrx7u3ghad4u" path="res://Ninja Adventure - Asset Pack/Sounds/Game/MiniImpact.wav" id="5_uit3j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5fb5"]
 atlas = ExtResource("1_ivh6b")
@@ -66,3 +67,6 @@ offset_bottom = 459.0
 text = "Blue Ninja"
 label_settings = SubResource("LabelSettings_p1a37")
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_uit3j")

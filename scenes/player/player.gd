@@ -9,6 +9,7 @@ class_name  Player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_treasure_label()
+	update_hp_bar()
 	if SceneManager.player_spawn_position != Vector2(0,0):
 		position = SceneManager.player_spawn_position
 	#Engine.max_fps = 15
@@ -21,6 +22,9 @@ func _physics_process(delta: float) -> void:
 	push_blocks()
 	
 	update_treasure_label()
+	
+	if Input.is_action_just_pressed("interact"):
+		attack()
 	
 	move_and_slide()
 
@@ -73,3 +77,37 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("interactable"):
 		body.can_interact = false
 		print("I stopped touching ", body.name)
+
+
+func _on_hitbox_area_2d_body_entered(body: Node2D) -> void:
+	SceneManager.player_hp -= 1
+	update_hp_bar()
+	print(SceneManager.player_hp)
+	if SceneManager.player_hp <= 0:
+		die()
+	
+func die():
+	SceneManager.player_hp = 3
+	get_tree().call_deferred("reload_current_scene")
+	
+func update_hp_bar():
+	if SceneManager.player_hp >=3:
+		%HPbar.play("3_hp")
+	elif SceneManager.player_hp == 2:
+		%HPbar.play("2_hp")
+	elif SceneManager.player_hp == 1:
+		%HPbar.play("1_hp")
+	else:
+		%HPbar.play("0_hp")
+
+func attack():
+	$Sword.visible = true
+	%SwordArea2D.monitoring = true
+	$AttackDurationsTimer.start()
+
+func _on_sword_area_2d_body_entered(body: Node2D) -> void:
+	body.queue_free()
+
+func _on_attack_durations_timer_timeout() -> void:
+	$Sword.visible = false
+	%SwordArea2D.monitoring = false

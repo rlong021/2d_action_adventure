@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://th8e2y5h1u0b"]
+[gd_scene load_steps=22 format=4 uid="uid://th8e2y5h1u0b"]
 
 [ext_resource type="PackedScene" uid="uid://cwrigugplt7c0" path="res://scenes/player/player.tscn" id="1_da1ih"]
 [ext_resource type="PackedScene" uid="uid://cyiujn8hp0nnu" path="res://scenes/sceneentrance/scene_entrance.tscn" id="2_jrocm"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dxqo6yxe76mtp" path="res://scenes/switch/switch.tscn" id="11_y7atv"]
 [ext_resource type="PackedScene" uid="uid://dc7pdpg7qv0kc" path="res://scenes/switch/switchpuzzle_manager.tscn" id="12_nrjgt"]
 [ext_resource type="PackedScene" uid="uid://bc2a0siq1fi3q" path="res://scenes/treasurechest/treasure_chest.tscn" id="13_jl8su"]
+[ext_resource type="AudioStream" uid="uid://c4vbsnj30luhu" path="res://Ninja Adventure - Asset Pack/Musics/2 - The Cave.ogg" id="14_25e2w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25e2w"]
 texture = ExtResource("3_3n2ag")
@@ -883,7 +884,7 @@ position = Vector2(-184, -56)
 position = Vector2(-200, -8)
 
 [node name="IceBlock" parent="." instance=ExtResource("8_21m2a")]
-position = Vector2(-8, -56)
+position = Vector2(8, -56)
 
 [node name="Lockeddoor3" parent="." instance=ExtResource("5_0pm5p")]
 position = Vector2(-40, -8)
@@ -901,7 +902,7 @@ position = Vector2(-72, 40)
 shape = SubResource("RectangleShape2D_xuuwp")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="PuzzleWalls"]
-position = Vector2(-8, -60)
+position = Vector2(-8, -64)
 shape = SubResource("RectangleShape2D_y7atv")
 
 [node name="SwitchpuzzleManager" parent="." instance=ExtResource("12_nrjgt")]
@@ -935,6 +936,12 @@ chest_name = "Chest3"
 [node name="TreasureChest3" parent="." instance=ExtResource("13_jl8su")]
 position = Vector2(56, -152)
 chest_name = "Chest4"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_25e2w")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="PuzzleButton" to="Lockeddoor" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="Lockeddoor" method="_on_puzzle_button_unpressed"]
