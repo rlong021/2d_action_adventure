@@ -917,7 +917,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="SlimeEnemy" parent="." instance=ExtResource("16_weddm")]
-position = Vector2(0, -40)
+position = Vector2(-117, -33)
 
 [connection signal="pressed" from="PuzzleButton" to="Lockeddoor" method="_on_puzzle_button_pressed"]
 [connection signal="unpressed" from="PuzzleButton" to="Lockeddoor" method="_on_puzzle_button_unpressed"]
