@@ -8,6 +8,9 @@ extends CharacterBody2D
 var target: Node2D
 
 func _physics_process(delta: float) -> void:
+	if HP <= 0:
+		return
+	
 	chase_target()
 	
 	animate_enemy()
@@ -41,3 +44,26 @@ func animate_enemy():
 
 func play_damage_sfx():
 	$damageSFX.play()
+
+func take_damage():
+	HP -= 1
+	if HP <= 0:
+		die()
+	
+	play_damage_sfx()
+	
+	var flash_red_color: Color = Color(10,0,0)
+	modulate = flash_red_color
+	
+	await get_tree().create_timer(0.2).timeout
+	
+	if is_instance_valid(self):
+		var original_color: Color = Color(1,1,1)
+		modulate = original_color
+
+func die():
+	$GPUParticles2D.emitting = true
+	$AnimatedSprite2D.visible =false
+	$CollisionShape2D.set_deferred("disabled",true)
+	await get_tree().create_timer(1).timeout
+	queue_free()

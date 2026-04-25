@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dhwv4uys2bi4c"]
+[gd_scene load_steps=25 format=3 uid="uid://dhwv4uys2bi4c"]
 
 [ext_resource type="Texture2D" uid="uid://dkdcivnhd4bwa" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime3/Slime3.png" id="1_dfk5d"]
 [ext_resource type="Script" uid="uid://d1mvs5cbfl7vv" path="res://scenes/ememies/slime_enemy.gd" id="1_x81ss"]
@@ -157,8 +157,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hckm5"]
 radius = 8.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6fqw"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 4.0
+color = Color(0.551695, 0.865919, 0.944625, 1)
+
 [node name="SlimeEnemy" type="CharacterBody2D"]
 collision_layer = 16
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_x81ss")
 
@@ -180,5 +191,12 @@ shape = SubResource("CircleShape2D_hckm5")
 
 [node name="damageSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_p6fqw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource("ParticleProcessMaterial_p6fqw")
 
 [connection signal="body_entered" from="PlayerDetectionArea2D" to="." method="_on_player_detection_area_2d_body_entered"]

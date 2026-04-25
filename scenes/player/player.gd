@@ -158,20 +158,7 @@ func _on_sword_area_2d_body_entered(body: Node2D) -> void:
 	
 	body.velocity += knockback_direction * knockback_strength
 	
-	body.HP -= 1
-	if body.HP <= 0:
-		body.queue_free()
-	
-	body.play_damage_sfx()
-	
-	var flash_red_color: Color = Color(10,0,0)
-	body.modulate = flash_red_color
-	
-	await get_tree().create_timer(0.2).timeout
-	
-	if is_instance_valid(body):
-		var original_color: Color = Color(1,1,1)
-		body.modulate = original_color
+	body.take_damage()
 
 func _on_attack_durations_timer_timeout() -> void:
 	$Sword.visible = false
