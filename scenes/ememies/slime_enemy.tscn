@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dhwv4uys2bi4c"]
+[gd_scene load_steps=24 format=3 uid="uid://dhwv4uys2bi4c"]
 
 [ext_resource type="Texture2D" uid="uid://dkdcivnhd4bwa" path="res://Ninja Adventure - Asset Pack/Actor/Monsters/Slime3/Slime3.png" id="1_dfk5d"]
 [ext_resource type="Script" uid="uid://d1mvs5cbfl7vv" path="res://scenes/ememies/slime_enemy.gd" id="1_x81ss"]
+[ext_resource type="AudioStream" uid="uid://bsugdmks6clie" path="res://Ninja Adventure - Asset Pack/Sounds/Game/Hit1.wav" id="3_p6fqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6fqw"]
 radius = 89.6772
@@ -176,5 +177,8 @@ frame_progress = 0.165049
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hckm5")
+
+[node name="damageSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p6fqw")
 
 [connection signal="body_entered" from="PlayerDetectionArea2D" to="." method="_on_player_detection_area_2d_body_entered"]
